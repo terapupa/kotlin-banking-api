@@ -15,7 +15,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=An0thrS3crt
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
-      - SPRING_JPA_SHOW-SQL=true
+#      - SPRING_JPA_SHOW-SQL=true
 
   mysqldb:
     platform: linux/arm64/v8

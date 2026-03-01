@@ -24,38 +24,24 @@ test {
 	useJUnitPlatform()
 }
 
-//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-//	compilerOptions {
-//		jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_24
-//		progressiveMode = true
-//	}
-//	kotlinOptions {
-//		suppressWarnings = true
-//	}
-//}
-
-//java {
-//	sourceCompatibility = JavaVersion.VERSION_17
-//	targetCompatibility = JavaVersion.VERSION_17
-//}
-//
-//kotlin {
-//	jvmToolchain(17)
-//}
-
-sourceSets {
-	main {
-		kotlin {
-			srcDirs = []
-		}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+	compilerOptions {
+		jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_18
+		progressiveMode = true
 	}
-	test {
-		kotlin {
-			srcDirs = []
-		}
+	kotlinOptions {
+		suppressWarnings = true
 	}
 }
 
+java {
+	sourceCompatibility = JavaVersion.VERSION_18
+	targetCompatibility = JavaVersion.VERSION_18
+}
+
+kotlin {
+	jvmToolchain(18)
+}
 
 dependencies {
 	// This is what makes versionless starters work:
@@ -84,5 +70,5 @@ dependencies {
 }
 
 springBoot {
-	mainClass = 'com.jupiteropt.assessment.JupiteroptApplication'
+	mainClass = 'com.jupiteropt.assessment.JupiteroptApplicationKt'
 }
