@@ -1,0 +1,15 @@
+# Build folders
+/build/
+
+# IDE
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Env files
+.env
