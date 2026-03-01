@@ -1,6 +1,6 @@
 # Build folders
 /build/
-/.gradle
+/.gradle/
 
 # IDE
 .idea/
