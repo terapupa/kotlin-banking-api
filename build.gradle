@@ -1,0 +1,88 @@
+plugins {
+	id 'org.springframework.boot' version '3.4.0'
+	id 'java'
+	id 'org.jetbrains.kotlin.jvm' version '2.2.0'
+	id 'org.jetbrains.kotlin.plugin.spring' version '2.2.0'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+System.setProperty("kotlinx.cinterop.experimental", "true")
+
+group = 'com.jupiteropt.assessment'
+version = '0.0.1-SNAPSHOT'
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+def junitVersion = '5.10.+'
+def mockitoVersion = '5.7.+'
+def kotlinVersion = '2.2.0'
+
+test {
+	useJUnitPlatform()
+}
+
+//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+//	compilerOptions {
+//		jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_24
+//		progressiveMode = true
+//	}
+//	kotlinOptions {
+//		suppressWarnings = true
+//	}
+//}
+
+//java {
+//	sourceCompatibility = JavaVersion.VERSION_17
+//	targetCompatibility = JavaVersion.VERSION_17
+//}
+//
+//kotlin {
+//	jvmToolchain(17)
+//}
+
+sourceSets {
+	main {
+		kotlin {
+			srcDirs = []
+		}
+	}
+	test {
+		kotlin {
+			srcDirs = []
+		}
+	}
+}
+
+
+dependencies {
+	// This is what makes versionless starters work:
+	implementation platform("org.springframework.boot:spring-boot-dependencies:3.4.0")
+
+	// Kotlin
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+	implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "com.fasterxml.jackson.module:jackson-module-kotlin"
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+	testImplementation "org.mockito:mockito-core:$mockitoVersion"
+	testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+	testImplementation "org.mockito.kotlin:mockito-kotlin:5.1.0"
+	testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
+	testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+}
+
+springBoot {
+	mainClass = 'com.jupiteropt.assessment.JupiteroptApplication'
+}
